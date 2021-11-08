@@ -18,7 +18,7 @@ def test_grid_to_string():
  === === === ===
 | 2 |   |   | 2 |
  === === === ===
-    """
+"""
     # on enleve le premier et le dernier retour chariot
     assert grid_to_string(grid, 4) == a[1:-1]
 
@@ -53,4 +53,4 @@ def test_grid_to_string_with_size_and_theme():
 
 
 if __name__ == "__main__":
-    None
+    test_grid_to_string()

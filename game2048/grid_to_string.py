@@ -9,7 +9,29 @@ THEMES = {"0": {"name": "Default", 0: "", 2: "2", 4: "4", 8: "8", 16: "16", 32: 
 
 
 def grid_to_string(game_grid, n):
-    return """ """
+    L = """"""
+    for i in range(2*n):
+        if i % 2 == 0:
+            for j in range(n):
+                L += """ ==="""
+
+        if i % 2 == 1:
+            L += """|"""
+            for j in range(n):
+                L += """ """
+                value = grid_get_value(game_grid, i//2, j)
+                if value != 0:
+                    L += str(value)
+                else:
+                    L += """ """
+                L += """ |"""
+
+        L += """
+"""
+    for j in range(n):
+        L += """ ==="""
+
+    return L
 
 
 def grid_to_string_with_size(grid, n):
