@@ -7,5 +7,5 @@ Projet de programmation du jeu 2048 par l'équipe 4096
 * GESNIER Guillaume :
 * ISSAOUI Safae :
 * KOPP Bilal :
-* MULLER Thibault :
+* MULLER Thibault : Programmer = 1/3 Coder + 2/3 Décoder #Adapta-Desk
 * VACHEROT Oscar :
