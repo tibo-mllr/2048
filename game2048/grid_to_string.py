@@ -8,10 +8,6 @@ def grid_to_string(game_grid, n):
     return """ """
 
 
-def long_value_with_theme(game_grid, theme):
-    return """ """
-
-
 def grid_to_string_with_size(grid, n):
     L = {"""== = == = == = == ="""}
     for k in range(len(grid[1])):
@@ -27,6 +23,10 @@ def long_value(grid):
         if i < len(A[k]):
             i = len(A[k])
     return i
+
+
+def long_value_with_theme(game_grid, theme):
+    return """ """
 
 
 def grid_to_string_with_size_and_theme(game_grid, theme, n):
