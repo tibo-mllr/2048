@@ -8,4 +8,4 @@ Projet de programmation du jeu 2048 par l'équipe 4096
 * ISSAOUI Safae : salut
 * KOPP Bilal :
 * MULLER Thibault : Programmer = 1/3 Coder + 2/3 Décoder #Adapta-Desk
-* VACHEROT Oscar :
+* VACHEROT Oscar : ça marche?
