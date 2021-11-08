@@ -7,4 +7,5 @@ Projet de programmation du jeu 2048 par l'équipe 4096
 * GESNIER Guillaume :
 * ISSAOUI Safae :
 * KOPP Bilal :
+* MULLER Thibault :
 * VACHEROT Oscar :
