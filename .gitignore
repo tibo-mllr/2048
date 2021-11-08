@@ -1,7 +1,0 @@
-### Python ###
-# Byte-compiled / optimized
-*/__pycache__/
-*/__pypackages__/
- 
-## db files.
-*.db
