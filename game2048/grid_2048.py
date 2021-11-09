@@ -71,7 +71,6 @@ def move_row_left(game_row):
     n = len(game_row)
     i = 0
     while i < n-1:
-        print(game_row)
         k = i + 1
         if game_row[i] == 0:
             while k < n-1 and game_row[k] == 0:
@@ -91,7 +90,6 @@ def move_row_left(game_row):
 
         i += 1
 
-    print("Final :", game_row)
     return game_row
 
 
