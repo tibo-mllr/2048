@@ -34,6 +34,8 @@ def grid_to_string(game_grid, n):
     return L
 
 
+# La vrai fonction
+
 def grid_to_string_with_size(game_grid, n):
     L = """"""
     l = len(game_grid)
