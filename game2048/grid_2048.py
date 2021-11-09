@@ -144,5 +144,12 @@ def move_down(game_grid):
     return TT
 
 
-grid = [[2, 0, 2, 0], [2, 0, 0, 0], [4, 0, 0, 0], [0, 0, 4, 0]]
-print(move_up(grid))
+def move_grid(game_grid, d):
+    if d == "up":
+        return move_up(game_grid)
+    if d == "down":
+        return move_down(game_grid)
+    if d == "left":
+        return move_left(game_grid)
+    if d == "right":
+        return move_right(game_grid)
