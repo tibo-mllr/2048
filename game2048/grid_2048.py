@@ -176,5 +176,22 @@ def move_possible(game_grid):
     return T
 
 
-move_possible([[2, 2, 2, 2], [4, 8, 8, 16], [0, 8, 0, 4], [
-    4, 8, 16, 32]])
+def is_game_over(game_grid):
+    return is_full_grid(game_grid) and move_possible(game_grid) == [False, False, False, False]
+
+
+def get_grid_tile_max(game_grid):
+    res = 0
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            if grid_get_value(game_grid, i, j) > res:
+                res = grid_get_value(game_grid, i, j)
+    return res
+
+
+def is_game_winner(game_grid):
+    if get_grid_tile_max >= 2048:
+        print("Vous avez gané ^-^")
+        return True
+    print("Perdu : essayez encore...")
+    return False

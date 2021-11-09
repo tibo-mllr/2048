@@ -105,6 +105,15 @@ def test_move_possible():
                          16, 8, 4, 2]]) == [False, False, False, False]
 
 
+def test_game_over():
+    assert is_game_over([[2, 4, 8, 16], [16, 8, 4, 2], [2, 4, 8, 16], [
+                         16, 8, 4, 2]]) == True
+    assert is_game_over([[2, 2, 2, 2], [4, 8, 8, 16], [0, 8, 0, 4], [
+                         4, 8, 16, 32]]) == False
+    assert is_game_over([[2, 0, 0, 2], [2, 4, 0, 0], [
+                        8, 4, 2, 0], [8, 2, 2, 0]]) == False
+
+
 if __name__ == "__main__":
     test_create_grid()
     test_grid_add_new_tile_at_position()
@@ -118,3 +127,4 @@ if __name__ == "__main__":
     test_move_row_right()
     test_move_grid()
     test_move_possible()
+    test_game_over()
