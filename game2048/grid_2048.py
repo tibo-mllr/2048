@@ -5,7 +5,7 @@ def create_grid(n):
     game_grid = []
 
     for i in range(n):
-        game_grid.append([' ' for j in range(n)])
+        game_grid.append([0 for j in range(n)])
 
     return game_grid
 
@@ -146,13 +146,13 @@ def move_down(game_grid):
 
 
 def move_grid(game_grid, d):
-    if d == "up":
+    if d == "h":
         return move_up(game_grid)
-    if d == "down":
+    if d == "b":
         return move_down(game_grid)
-    if d == "left":
+    if d == "g":
         return move_left(game_grid)
-    if d == "right":
+    if d == "d":
         return move_right(game_grid)
 
 
@@ -166,7 +166,7 @@ def is_full_grid(game_grid):
 
 def move_possible(game_grid):
     T = [False, False, False, False]
-    D = ["up", "right", "down", "left"]
+    D = ["h", "d", "b", "g"]
     for i in range(len(D)):
         C = list(game_grid)
         res = list(move_grid(C, D[i]))
@@ -191,7 +191,6 @@ def get_grid_tile_max(game_grid):
 
 def is_game_winner(game_grid):
     if get_grid_tile_max >= 2048:
-        print("Vous avez gané ^-^")
         return True
-    print("Perdu : essayez encore...")
+
     return False
