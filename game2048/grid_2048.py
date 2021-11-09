@@ -190,7 +190,7 @@ def get_grid_tile_max(game_grid):
 
 
 def is_game_winner(game_grid):
-    if get_grid_tile_max >= 2048:
+    if get_grid_tile_max(game_grid) >= 2048:
         return True
 
     return False
