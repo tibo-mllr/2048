@@ -65,3 +65,34 @@ def init_game(n):
     game_grid = grid_add_new_tile(game_grid)
     game_grid = grid_add_new_tile(game_grid)
     return game_grid
+
+
+def move_row_left(game_row):
+    n = len(game_row)
+    i = 0
+    while i < n-1:
+        print(game_row)
+        k = i + 1
+        if game_row[i] == 0:
+            while k < n-1 and game_row[k] == 0:
+                k += 1
+
+            game_row[i], game_row[k] = game_row[k], 0
+
+        k = i + 1
+
+        if game_row[i] != 0:
+            while k < n-1 and game_row[k] == 0:
+                k += 1
+
+            if game_row[k] == game_row[i]:
+                game_row[i] += game_row[k]
+                game_row[k] = 0
+
+        i += 1
+
+    print("Final :", game_row)
+    return game_row
+
+
+move_row_left([0, 0, 0, 2])
