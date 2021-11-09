@@ -75,19 +75,59 @@ def grid_to_string_with_size(game_grid, n):
     return L
 
 
-def long_value(grid):
+def long_value(game_grid):
     i = 0
-    n = len(grid)
-    A = grid_to_string(grid, n)
-    for k in len(A):
-        if i < len(A[k]):
-            i = len(A[k])
+    n = len(game_grid)
+    for k in len(n):
+        for i in len(n):
+            if i < len(str(game_grid[k][i])):
+                i = len(str(game_grid[k][i]))
     return i
 
 
-def long_value_with_theme(game_grid, theme):
-    return """ """
+def long_value_with_theme(game_grid,theme):
+    i = 0
+    n = len(game_grid)
+    for k in len(n):
+        for i in len(n):
+            if i < len(str(theme[game_grid[k][i]])):
+                i = len(str(theme[game_grid[k][i]]))
+    return i 
 
+def grid_to_string_with_size_and_theme(game_grid, n, theme):
+    L = """"""
+    l = len(game_grid)
+    for i in range(l):
+        # Ligne déco 1
+        for j in range(l):
+            L += """ """
+            for k in range(n):
+                L += """="""
+            L += """ """
+        L += """
+"""
 
-def grid_to_string_with_size_and_theme(game_grid, theme, n):
-    return """ """
+        # Ligne nombres
+        for j in range(l):
+            L += """| """
+            value = grid_get_value(game_grid, i, j)
+            if value != 0:
+                L += str(theme[value])
+            else:
+                for k in range(n - 2):
+                    L += """ """
+            L += """ |"""
+        L += """
+"""
+
+        # Ligne déco 2
+        for j in range(l):
+            L += """ """
+            for k in range(n):
+                L += """="""
+            L += """ """
+
+        L += """
+"""
+
+    return L
