@@ -8,6 +8,6 @@ def  test_read_size_grid(monkeypatch):
     assert read_size_grid()=="4"
 def test_read_theme_grid(monkeypatch):
     monkeypatch.setattr("builtins.input",lambda cmd:"4")
-     assert read_theme_grid()=='default'
+    assert read_theme_grid()=='default'
     
 
