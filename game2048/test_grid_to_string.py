@@ -7,7 +7,7 @@ THEMES = {"0": {"name": "Default", 0: "", 2: "2", 4: "4", 8: "8", 16: "16", 32: 
 
 def test_grid_to_string():
     grid = [[' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '],
-            [' ', ' ', ' ', ' '], [2, ' ', ' ', 2]]
+            [' ', ' ', ' ', ' '], [128, ' ', ' ', 128]]
     a = """
  === === === ===
 |   |   |   |   |
@@ -20,7 +20,7 @@ def test_grid_to_string():
  === === === ===
 """
     # on enleve le premier et le dernier retour chariot
-    assert grid_to_string(grid, 4) == a[1:-1]
+    print(grid_to_string_with_size(grid, 5))
 
 
 def test_long_value_with_theme():

@@ -34,11 +34,43 @@ def grid_to_string(game_grid, n):
     return L
 
 
-def grid_to_string_with_size(grid, n):
-    L = {"""== = == = == = == ="""}
-    for k in range(len(grid[1])):
-        StrLigne = "|".join(grid[k])
-        L = 'StrLigne'
+def grid_to_string_with_size(game_grid, n):
+    L = """"""
+    l = len(game_grid)
+    for i in range(l):
+        # Ligne déco 1
+        for j in range(l):
+            L += """ """
+            for k in range(n):
+                L += """="""
+            L += """ """
+        L += """
+"""
+
+        # Ligne nombres
+        for j in range(l):
+            L += """| """
+            value = grid_get_value(game_grid, i, j)
+            if value != 0:
+                L += str(value)
+            else:
+                for k in range(n - 2):
+                    L += """ """
+            L += """ |"""
+        L += """
+"""
+
+        # Ligne déco 2
+        for j in range(l):
+            L += """ """
+            for k in range(n):
+                L += """="""
+            L += """ """
+
+        L += """
+"""
+
+    return L
 
 
 def long_value(grid):
