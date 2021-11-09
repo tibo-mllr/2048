@@ -70,27 +70,128 @@ def init_game(n):
 def move_row_left(game_row):
     n = len(game_row)
     i = 0
+    row = list(game_row)
     while i < n-1:
         k = i + 1
-        if game_row[i] == 0:
-            while k < n-1 and game_row[k] == 0:
+        if row[i] == 0:
+            while k < n-1 and row[k] == 0:
                 k += 1
 
-            game_row[i], game_row[k] = game_row[k], 0
+            row[i], row[k] = row[k], 0
 
         k = i + 1
 
-        if game_row[i] != 0:
-            while k < n-1 and game_row[k] == 0:
+        if row[i] != 0:
+            while k < n-1 and row[k] == 0:
                 k += 1
 
-            if game_row[k] == game_row[i]:
-                game_row[i] += game_row[k]
-                game_row[k] = 0
+            if row[k] == row[i]:
+                row[i] += row[k]
+                row[k] = 0
 
         i += 1
 
-    return game_row
+    return row
 
 
-move_row_left([0, 0, 0, 2])
+def move_row_right(game_row):
+    rev = move_row_left(game_row[::-1])
+    rev.reverse()
+
+    return rev
+
+
+def move_left(game_grid):
+    for i in range(len(game_grid)):
+        game_grid[i] = move_row_left(game_grid[i])
+    return game_grid
+
+
+def move_right(game_grid):
+    for i in range(len(game_grid)):
+        game_grid[i] = move_row_right(game_grid[i])
+    return game_grid
+
+
+def move_up(game_grid):
+    T = [[] for i in range(len(game_grid))]
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            T[i].append(game_grid[j][i])
+
+    T = move_left(T)
+
+    TT = [[] for i in range(len(game_grid))]
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            TT[i].append(T[j][i])
+
+    return TT
+
+
+def move_down(game_grid):
+    T = [[] for i in range(len(game_grid))]
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            T[i].append(game_grid[j][i])
+
+    T = move_right(T)
+
+    TT = [[] for i in range(len(game_grid))]
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            TT[i].append(T[j][i])
+
+    return TT
+
+
+def move_grid(game_grid, d):
+    if d == "up":
+        return move_up(game_grid)
+    if d == "down":
+        return move_down(game_grid)
+    if d == "left":
+        return move_left(game_grid)
+    if d == "right":
+        return move_right(game_grid)
+
+
+def is_full_grid(game_grid):
+    T = True
+    for row in game_grid:
+        if ' ' in row or 0 in row:
+            T = False
+    return T
+
+
+def move_possible(game_grid):
+    T = [False, False, False, False]
+    D = ["up", "right", "down", "left"]
+    for i in range(len(D)):
+        C = list(game_grid)
+        res = list(move_grid(C, D[i]))
+        if game_grid != res:
+            T[i] = True
+
+    return T
+
+
+def is_game_over(game_grid):
+    return is_full_grid(game_grid) and move_possible(game_grid) == [False, False, False, False]
+
+
+def get_grid_tile_max(game_grid):
+    res = 0
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            if grid_get_value(game_grid, i, j) > res:
+                res = grid_get_value(game_grid, i, j)
+    return res
+
+
+def is_game_winner(game_grid):
+    if get_grid_tile_max >= 2048:
+        print("Vous avez gané ^-^")
+        return True
+    print("Perdu : essayez encore...")
+    return False

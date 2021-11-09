@@ -86,6 +86,46 @@ def test_move_row_left():
     assert move_row_left([4, 8, 16, 32]) == [4, 8, 16, 32]
 
 
+def test_move_row_right():
+
+    assert move_row_right([2, 0, 0, 0]) == [0, 0, 0, 2]
+    assert move_row_right([0, 2, 0, 4]) == [0, 0, 2, 4]
+    assert move_row_right([2, 2, 0, 4]) == [0, 0, 4, 4]
+    assert move_row_right([2, 2, 2, 2]) == [0, 0, 4, 4]
+    assert move_row_right([4, 2, 0, 2]) == [0, 0, 4, 4]
+    assert move_row_right([2, 0, 0, 2]) == [0, 0, 0, 4]
+    assert move_row_right([2, 4, 2, 2]) == [0, 2, 4, 4]
+    assert move_row_right([2, 4, 4, 0]) == [0, 0, 2, 8]
+    assert move_row_right([4, 8, 16, 32]) == [4, 8, 16, 32]
+
+
+def test_move_grid():
+    assert move_grid([[2, 0, 0, 2], [4, 4, 0, 0], [8, 0, 8, 0], [0, 2, 2, 0]], "left") == [
+        [4, 0, 0, 0], [8, 0, 0, 0], [16, 0, 0, 0], [4, 0, 0, 0]]
+    assert move_grid([[2, 0, 0, 2], [4, 4, 0, 0], [8, 0, 8, 0], [0, 2, 2, 0]], "right") == [
+        [0, 0, 0, 4], [0, 0, 0, 8], [0, 0, 0, 16], [0, 0, 0, 4]]
+    assert move_grid([[2, 0, 0, 2], [2, 4, 0, 0], [8, 4, 2, 0], [8, 2, 2, 0]], "up") == [
+        [4, 8, 4, 2], [16, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    assert move_grid([[2, 0, 0, 2], [2, 4, 0, 0], [8, 4, 2, 0], [8, 2, 2, 0]], "down") == [
+        [0, 0, 0, 0], [0, 0, 0, 0], [4, 8, 0, 0], [16, 2, 4, 2]]
+
+
+def test_move_possible():
+    assert move_possible([[2, 2, 2, 2], [4, 8, 8, 16], [0, 8, 0, 4], [
+                         4, 8, 16, 32]]) == [True, True, True, True]
+    assert move_possible([[2, 4, 8, 16], [16, 8, 4, 2], [2, 4, 8, 16], [
+                         16, 8, 4, 2]]) == [False, False, False, False]
+
+
+def test_game_over():
+    assert is_game_over([[2, 4, 8, 16], [16, 8, 4, 2], [2, 4, 8, 16], [
+                         16, 8, 4, 2]]) == True
+    assert is_game_over([[2, 2, 2, 2], [4, 8, 8, 16], [0, 8, 0, 4], [
+                         4, 8, 16, 32]]) == False
+    assert is_game_over([[2, 0, 0, 2], [2, 4, 0, 0], [
+                        8, 4, 2, 0], [8, 2, 2, 0]]) == False
+
+
 if __name__ == "__main__":
     test_create_grid()
     test_grid_add_new_tile_at_position()
@@ -99,4 +139,11 @@ if __name__ == "__main__":
     test_move_row_left()
 =======
     test_move_row_left()
+<<<<<<< HEAD
 >>>>>>> 62c0685da47e59446808d5dca8e7a1b59341d93a
+=======
+    test_move_row_right()
+    test_move_grid()
+    test_move_possible()
+    test_game_over()
+>>>>>>> 87e3b88ccb17d8c1e10ff0d93413d4305f2c2e63
