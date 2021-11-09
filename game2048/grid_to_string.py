@@ -9,27 +9,53 @@ THEMES = {"0": {"name": "Default", 0: "", 2: "2", 4: "4", 8: "8", 16: "16", 32: 
 
 
 def grid_to_string(game_grid, n):
+    Max = long_value(game_grid)
     L = """"""
-    for i in range(2*n):
-        if i % 2 == 0:
-            for j in range(n):
-                L += """ ==="""
+    for i in range(n):
+        # Ligne déco 1
+        for j in range(n):
+            L += """ """
+            for k in range(Max + 2):
+                L += """="""
+            L += """ """
+        L += """
+"""
 
-        if i % 2 == 1:
-            L += """|"""
-            for j in range(n):
-                L += """ """
-                value = grid_get_value(game_grid, i//2, j)
-                if value != 0:
-                    L += str(value)
-                else:
+        # Ligne nombres
+        for j in range(n):
+            L += """| """
+            value = grid_get_value(game_grid, i, j)
+
+            if value != 0:
+                print("OK1")
+                long = len(str(value))
+                vide = Max - long
+                for k in range(vide // 2):
+                    print("OK2")
                     L += """ """
-                L += """ |"""
+
+                L += str(value)
+
+                for k in range(vide // 2 + 1):
+                    print("OK3")
+                    L += """ """
+
+            else:
+                for k in range(Max):
+                    L += """ """
+            L += """ |"""
+        L += """
+"""
+
+        # Ligne déco 2
+        for j in range(n):
+            L += """ """
+            for k in range(Max + 2):
+                L += """="""
+            L += """ """
 
         L += """
 """
-    for j in range(n):
-        L += """ ==="""
 
     return L
 
@@ -78,10 +104,10 @@ def grid_to_string_with_size(game_grid, n):
 def long_value(grid):
     i = 0
     n = len(grid)
-    A = grid_to_string(grid, n)
-    for k in len(A):
-        if i < len(A[k]):
-            i = len(A[k])
+    for j in range(n):
+        for k in range(n):
+            if i < len(str(grid[j][k])):
+                i = len(str(grid[j][k]))
     return i
 
 
