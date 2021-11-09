@@ -2,7 +2,7 @@ def read_player_command():
     move = input("Entrez votre commande :")
     if move not in ['g', 'd', 'h', 'b']:
         return read_player_command()
-    return "resaisez la commande"
+    return move
 
 
 def read_size_grid():
