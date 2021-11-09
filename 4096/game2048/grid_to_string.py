@@ -132,12 +132,12 @@ def long_value_with_theme(game_grid, theme):
     for j in range(n):
         for k in range(n):
             if game_grid[j][k] != ' ':
-                if i < len(THEMES[theme][game_grid[j][k]]):
-                    i = len(THEMES[theme][game_grid[j][k]])
+                if i < len(theme[game_grid[j][k]]):
+                    i = len(theme[game_grid[j][k]])
     return i
 
 
-def grid_to_string_with_size_and_theme(game_grid, n, theme):
+def grid_to_string_with_size_and_theme(game_grid, theme, n):
     Max = long_value_with_theme(game_grid, theme)
     L = """"""
     for i in range(n):
@@ -157,12 +157,12 @@ def grid_to_string_with_size_and_theme(game_grid, n, theme):
                 value = grid_get_value(game_grid, i, j)
 
                 if value != 0 and value != ' ':
-                    long = len(str(value))
+                    long = len(theme[value])
                     vide = Max - long
                     for k in range(vide // 2):
                         L += """ """
 
-                    L += THEMES[theme][value]
+                    L += theme[value]
 
                     for k in range(Max - vide // 2 - long):
                         L += """ """
