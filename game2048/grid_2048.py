@@ -70,27 +70,28 @@ def init_game(n):
 def move_row_left(game_row):
     n = len(game_row)
     i = 0
+    row = list(game_row)
     while i < n-1:
         k = i + 1
-        if game_row[i] == 0:
-            while k < n-1 and game_row[k] == 0:
+        if row[i] == 0:
+            while k < n-1 and row[k] == 0:
                 k += 1
 
-            game_row[i], game_row[k] = game_row[k], 0
+            row[i], row[k] = row[k], 0
 
         k = i + 1
 
-        if game_row[i] != 0:
-            while k < n-1 and game_row[k] == 0:
+        if row[i] != 0:
+            while k < n-1 and row[k] == 0:
                 k += 1
 
-            if game_row[k] == game_row[i]:
-                game_row[i] += game_row[k]
-                game_row[k] = 0
+            if row[k] == row[i]:
+                row[i] += row[k]
+                row[k] = 0
 
         i += 1
 
-    return game_row
+    return row
 
 
 def move_row_right(game_row):
@@ -153,3 +154,27 @@ def move_grid(game_grid, d):
         return move_left(game_grid)
     if d == "right":
         return move_right(game_grid)
+
+
+def is_full_grid(game_grid):
+    T = True
+    for row in game_grid:
+        if ' ' in row or 0 in row:
+            T = False
+    return T
+
+
+def move_possible(game_grid):
+    T = [False, False, False, False]
+    D = ["up", "right", "down", "left"]
+    for i in range(len(D)):
+        C = list(game_grid)
+        res = list(move_grid(C, D[i]))
+        if game_grid != res:
+            T[i] = True
+
+    return T
+
+
+move_possible([[2, 2, 2, 2], [4, 8, 8, 16], [0, 8, 0, 4], [
+    4, 8, 16, 32]])

@@ -98,6 +98,13 @@ def test_move_grid():
         [0, 0, 0, 0], [0, 0, 0, 0], [4, 8, 0, 0], [16, 2, 4, 2]]
 
 
+def test_move_possible():
+    assert move_possible([[2, 2, 2, 2], [4, 8, 8, 16], [0, 8, 0, 4], [
+                         4, 8, 16, 32]]) == [True, True, True, True]
+    assert move_possible([[2, 4, 8, 16], [16, 8, 4, 2], [2, 4, 8, 16], [
+                         16, 8, 4, 2]]) == [False, False, False, False]
+
+
 if __name__ == "__main__":
     test_create_grid()
     test_grid_add_new_tile_at_position()
@@ -110,3 +117,4 @@ if __name__ == "__main__":
     test_move_row_left()
     test_move_row_right()
     test_move_grid()
+    test_move_possible()
