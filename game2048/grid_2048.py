@@ -1,7 +1,7 @@
 from random import *
 
 
-def create_grid(n):
+def create_grid(n):  #crée une grille de taille nxn
     game_grid = []
 
     for i in range(n):
