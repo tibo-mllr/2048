@@ -55,6 +55,8 @@ def grid_to_string_with_size(game_grid, n):
             value = grid_get_value(game_grid, i, j)
             if value != 0:
                 L += str(value)
+                for k in range(n-2-len(str(value))):
+                    L += """ """
             else:
                 for k in range(n - 2):
                     L += """ """
@@ -113,6 +115,8 @@ def grid_to_string_with_size_and_theme(game_grid, n, theme):
             value = grid_get_value(game_grid, i, j)
             if value != 0:
                 L += str(theme[value])
+                for k in range(n-2-len(str(value))):
+                    L += """ """
             else:
                 for k in range(n - 2):
                     L += """ """
