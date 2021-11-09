@@ -66,23 +66,31 @@ def init_game(n):
     game_grid = grid_add_new_tile(game_grid)
     return game_grid
 
-def move_row_left(liste):
-    n = len(liste)
-    i=0
-    for k in range(1,n):
-        b=False
-        for j in reversed(range(i,k)):
-            if liste[j] == 0 and liste[j+1] !=0:
-                liste[j] = liste[j+1]
-                liste[j+1] = 0
-            if liste[j+1] == liste[j] and liste[j] !=0:
-                liste[j] = liste[j]*2
-                liste[j+1]=0
-                b=True
-        if b:
-            i +=1
-        print(liste)
-        print(i)
-    return liste
 
-move_row_left([4, 2, 0, 2])
+def move_row_left(game_row):
+    n = len(game_row)
+    i = 0
+    while i < n-1:
+        k = i + 1
+        if game_row[i] == 0:
+            while k < n-1 and game_row[k] == 0:
+                k += 1
+
+            game_row[i], game_row[k] = game_row[k], 0
+
+        k = i + 1
+
+        if game_row[i] != 0:
+            while k < n-1 and game_row[k] == 0:
+                k += 1
+
+            if game_row[k] == game_row[i]:
+                game_row[i] += game_row[k]
+                game_row[k] = 0
+
+        i += 1
+
+    return game_row
+
+
+move_row_left([0, 0, 0, 2])

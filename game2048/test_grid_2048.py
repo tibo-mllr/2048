@@ -73,6 +73,19 @@ def test_move_row_left():
     assert move_row_left([4, 8, 16, 32]) == [4, 8, 16, 32]
 
 
+def test_move_row_left():
+
+    assert move_row_left([0, 0, 0, 2]) == [2, 0, 0, 0]
+    assert move_row_left([0, 2, 0, 4]) == [2, 4, 0, 0]
+    assert move_row_left([2, 2, 0, 4]) == [4, 4, 0, 0]
+    assert move_row_left([2, 2, 2, 2]) == [4, 4, 0, 0]
+    assert move_row_left([4, 2, 0, 2]) == [4, 4, 0, 0]
+    assert move_row_left([2, 0, 0, 2]) == [4, 0, 0, 0]
+    assert move_row_left([2, 4, 2, 2]) == [2, 4, 4, 0]
+    assert move_row_left([2, 4, 4, 0]) == [2, 8, 0, 0]
+    assert move_row_left([4, 8, 16, 32]) == [4, 8, 16, 32]
+
+
 if __name__ == "__main__":
     test_create_grid()
     test_grid_add_new_tile_at_position()
@@ -82,4 +95,8 @@ if __name__ == "__main__":
     test_get_new_position()
     test_grid_add_new_tile()
     test_init_game()
+<<<<<<< HEAD
     test_move_row_left()
+=======
+    test_move_row_left()
+>>>>>>> 62c0685da47e59446808d5dca8e7a1b59341d93a

@@ -20,7 +20,7 @@ def test_grid_to_string():
  === === === ===
 """
     # on enleve le premier et le dernier retour chariot
-    print(grid_to_string_with_size_and_theme(grid, 4, "2"))
+    print(grid_to_string_with_size_and_theme(grid, THEMES["2"], 5))
 
 
 def test_long_value_with_theme():
@@ -49,8 +49,10 @@ def test_grid_to_string_with_size_and_theme():
 |Ne|Na|F |H |
 =============
 """
-    assert grid_to_string_with_size_and_theme(grid, THEMES["1"], 4) == a[1:-1]
+    print(grid_to_string_with_size_and_theme(grid, THEMES["1"], 4))
 
 
 if __name__ == "__main__":
     test_grid_to_string()
+    test_long_value_with_theme()
+    test_grid_to_string_with_size_and_theme()
