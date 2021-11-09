@@ -93,4 +93,56 @@ def move_row_left(game_row):
     return game_row
 
 
-move_row_left([0, 0, 0, 2])
+def move_row_right(game_row):
+    rev = move_row_left(game_row[::-1])
+    rev.reverse()
+
+    return rev
+
+
+def move_left(game_grid):
+    for i in range(len(game_grid)):
+        game_grid[i] = move_row_left(game_grid[i])
+    return game_grid
+
+
+def move_right(game_grid):
+    for i in range(len(game_grid)):
+        game_grid[i] = move_row_right(game_grid[i])
+    return game_grid
+
+
+def move_up(game_grid):
+    T = [[] for i in range(len(game_grid))]
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            T[i].append(game_grid[j][i])
+
+    T = move_left(T)
+
+    TT = [[] for i in range(len(game_grid))]
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            TT[i].append(T[j][i])
+
+    return TT
+
+
+def move_down(game_grid):
+    T = [[] for i in range(len(game_grid))]
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            T[i].append(game_grid[j][i])
+
+    T = move_right(T)
+
+    TT = [[] for i in range(len(game_grid))]
+    for i in range(len(game_grid)):
+        for j in range(len(game_grid)):
+            TT[i].append(T[j][i])
+
+    return TT
+
+
+grid = [[2, 0, 2, 0], [2, 0, 0, 0], [4, 0, 0, 0], [0, 0, 4, 0]]
+print(move_up(grid))
