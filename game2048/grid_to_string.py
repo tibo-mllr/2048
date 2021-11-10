@@ -28,11 +28,9 @@ def grid_to_string(game_grid):
             value = grid_get_value(game_grid, i, j)
 
             if value != 0:
-                print("OK1")
                 long = len(str(value))
                 vide = Max - long
                 for k in range(vide // 2):
-                    print("OK2")
                     L += """ """
 
                 L += str(value)

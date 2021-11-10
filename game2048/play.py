@@ -1,7 +1,26 @@
 from grid_2048 import *
 from grid_to_string import *
 from textual_2048 import *
+import random as rd
 
+def random_play():
+    game_grid = init_game(4)
+    D=['h','b','g','d']
+    while not is_game_over(game_grid):
+        r=rd.randint(0,3)
+        game_grid = move_grid(game_grid, D[r])
+        print(grid_to_string(game_grid))
+        if not is_full_grid(game_grid):
+            game_grid = grid_add_new_tile(game_grid)
+    if is_game_winner(game_grid):
+        print("Vous avez gagné ^-^")
+
+    else:
+        print("Perdu : essayez encore...")
+
+random_play()
+
+        
 
 def jeu():
     size = read_size_grid()
@@ -14,7 +33,7 @@ def jeu():
         if not is_full_grid(game_grid):
             game_grid = grid_add_new_tile(game_grid)
     if is_game_winner(game_grid):
-        print("Vous avez gané ^-^")
+        print("Vous avez gagné ^-^")
 
     else:
         print("Perdu : essayez encore...")
@@ -27,4 +46,3 @@ def jeu():
 
 if __name__ == '__main__':
     print("Bienvenue")
-    jeu()
