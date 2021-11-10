@@ -21,7 +21,7 @@ def jeu():
 
     Rep = input("Voulez-vous rejouer ? (1 : oui, 0 : non)")
 
-    if Rep == 1:
+    if Rep == '1':
         jeu()
 
 
