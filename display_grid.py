@@ -17,7 +17,6 @@ game_grid = []
 
 Entries = {}
 
-
 def key_pressed(event):
     global game_grid
     Dir = {'q': 'g', 'z': 'h', 'd': 'd', 's': 'b'}
@@ -71,7 +70,7 @@ def graphical_grid_init():
     Theme = Ent_Theme.get().strip()
     print("Theme :", Theme)
     Play = tk.Button(window, text="Play",
-                     command=play)
+                    command=play)
     Play.pack(side=tk.RIGHT)
     global Widgets
     Widgets = {}
@@ -133,6 +132,3 @@ def display_and_update_graphical_grid(n, theme):
                 Widgets[(i, j)].configure(text=' ')
                 Widgets[(i, j)].configure(bg='#8B6C42')
 
-
-if __name__ == '__main__':
-    graphical_grid_init()
