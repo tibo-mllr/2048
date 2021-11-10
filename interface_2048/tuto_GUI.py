@@ -1,9 +1,17 @@
 from tkinter import *
 from pprint import pformat
 
+<<<<<<< HEAD
 def print_bonjour(i):
     label.config(text="Hello")
 
+=======
+
+def print_bonjour(i):
+    label.config(text="Hello")
+
+
+>>>>>>> e6c7b71895399f7c1b4be6944978bcf13a3d37e4
 root = Tk()
 frame = Frame(root, bg='white', height=100, width=400)
 entry = Entry(root)
