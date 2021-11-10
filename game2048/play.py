@@ -1,6 +1,6 @@
-from grid_2048 import *
-from grid_to_string import *
-from textual_2048 import *
+from game2048.grid_2048 import *
+from game2048.grid_to_string import *
+from game2048.textual_2048 import *
 
 
 def jeu():
