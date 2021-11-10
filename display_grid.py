@@ -20,9 +20,11 @@ Entries = {}
 
 def key_pressed(event):
     global game_grid
-    Dir = {'q': 'g', 'z': 'h', 'd': 'd', 's': 'b'}
+    Dir = {'q': 'g', 'z': 'h', 'd': 'd',
+           's': 'b', 'b': 'b', 'g': 'g', 'h': 'h'}
+    car = event.char
     if not is_game_over(game_grid):
-        new_game_grid = move_grid(list(game_grid), Dir[event.char])
+        new_game_grid = move_grid(list(game_grid), Dir[car.lower()])
 
         if not is_full_grid(new_game_grid) and game_grid != new_game_grid:
             new_game_grid = grid_add_new_tile(new_game_grid)
