@@ -40,8 +40,10 @@ def key_pressed(event):
 def graphical_grid_init():
     global window
     window = tk.Tk()
+    window.title("Menu")
     global G_2048
     G_2048 = tk.Toplevel(window)
+    G_2048.title("2048")
     G_2048.grid()
 
     Ent_Size = tk.StringVar("")
