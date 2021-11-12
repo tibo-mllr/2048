@@ -12,7 +12,7 @@ Composée de 5 membres, cette équipe a clairement la meilleure ambiance
 * Vacherot Oscar
 
 ## Organisation
-* Le fichier display_grid.py est la version finale : interface graphique avec menu. Les couleurs sont codées jusqu'à 8192 comme les thèmes donnés par l'énoncé. Tout marche (normalement) sauf pour rejouer : on est obligé de quitter les fenêtres et de relancer le code.
+* Le fichier display_grid.py est la version finale : interface graphique avec menu. Les couleurs sont codées jusqu'à 8192 comme les thèmes donnés par l'énoncé. Tout marche (normalement) sauf pour rejouer : on est obligé de quitter les fenêtres et de relancer le code. Il prend en compte 'hdbg' comme demandé, mais aussi 'zqsd' et toutes ces lettres en majuscule par question de facilité.
 
 * Les fichier play.py dans le dossier game2048 est le jeu fonctionnel sur python. Tout marche (normalement) même pour rejouer.
 
