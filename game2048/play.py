@@ -14,9 +14,9 @@ def jeu():
         if not is_full_grid(new_game_grid) and game_grid != new_game_grid:
             new_game_grid = grid_add_new_tile(new_game_grid)
 
-        game_grid = list(new_game_grid)
+        game_griad = list(new_game_grid)
     if is_game_winner(game_grid) or is_game_winner(new_game_grid):
-        print("Vous avez gané ^-^")
+        print("Vous avez gagné ^-^")
 
     else:
         print("Perdu : essayez encore...")
