@@ -13,8 +13,10 @@ Composée de 5 membres, cette équipe a clairement la meilleure ambiance
 
 ## Organisation
 * Le fichier display_grid.py est la version finale : interface graphique avec menu. Les couleurs sont codées jusqu'à 8192 comme les thèmes donnés par l'énoncé. Tout marche (normalement) sauf pour rejouer : on est obligé de quitter les fenêtres et de relancer le code. Il prend en compte 'hdbg' comme demandé, mais aussi 'zqsd' et toutes ces lettres en majuscule par question de facilité.
+![alt text](Photos_ReadMe/Interface.png)
 
 * Les fichier play.py dans le dossier game2048 est le jeu fonctionnel sur python. Tout marche (normalement) même pour rejouer.
+![alt text](Photos_ReadMe/Jeu.png)
 
 * Le dossier interface_2048 contient le fichiers portants sur l'interface tkinter, mais étant donné que pour display_grid.py il faut importer des fichiers d'autres dossiers, il a fallait le sortir et le mettre dans le dossier général.
 
