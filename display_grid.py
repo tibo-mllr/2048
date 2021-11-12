@@ -100,16 +100,18 @@ def play(*args):
 
 
 def create_pattern(n):
-    C = tk.Canvas(background, bg='white', height=100*n, width=100*n)
+    C = tk.Canvas(background, bg='white', height=100*(n+2), width=100*(n+3))
     C.pack(fill=tk.BOTH, expand=True)
+    C.create_rectangle(150,25,250,125, fill='#512E5F')
+    C.create_text(200,75, text='2048', fill='white')
 
     # Lignes
-    for i in range(n):
-        C.create_line((0, 100*i), (100*n, 100*i), width=2)
+    for i in range(n+1):
+        C.create_line((150, 100*i+150), (100*n+150, 100*i+150), width=2)
 
     # Colonnes
-    for i in range(n):
-        C.create_line((100*i, 0), (100*i, 100*n), width=2)
+    for i in range(n+1):
+        C.create_line((100*i+150, 150), (100*i+150, 100*n+150), width=2)
 
     # Widgets
 
@@ -117,8 +119,8 @@ def create_pattern(n):
         for j in range(n):
             Widgets[(i, j)] = tk.Label(background, bg='#8B6C42')
             Widgets[(i, j)].pack(fill=tk.BOTH, expand=True)
-            Windows[(i, j)] = C.create_window(100*i + 50, 100 *
-                                              j + 50, height=98, width=98, window=Widgets[(i, j)])
+            Windows[(i, j)] = C.create_window(100*i + 200, 100 *
+                                              j + 200, height=98, width=98, window=Widgets[(i, j)])
 
 
 def display_and_update_graphical_grid(n, theme):
@@ -140,6 +142,8 @@ def StartGame():
     boutonStart.grid(padx=50, pady=50)
     boutonQuit = tk.Button (text = "Quitter le jeu", command = Start.quit)
     boutonQuit.grid()
+    Fond = tk.Canvas(Start, bg='Yellow', height=400, width=400)
+    Fond.grid()
     Start.mainloop()
 
-StartGame()
+graphical_grid_init()
