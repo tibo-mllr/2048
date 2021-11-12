@@ -4,7 +4,7 @@ from tkinter import Canvas, StringVar, ttk
 from functools import partial
 
 Colours = {2: '#FBEEE6', 4: '#F2D7D5', 8: '#E6B0AA', 16: '#D98880', 32: '#CD6155', 64: '#C0392B',
-           128: '#A93226', 256: '#922B21', 512: '#7B241C', 1024: '#641E16', 2048: '#512E5F', 4096: '#4A235A'}
+           128: '#A93226', 256: '#922B21', 512: '#7B241C', 1024: '#641E16', 2048: '#512E5F', 4096: '#4A235A', 8192: '#7F00FF'}
 
 THEMES = {"0": {"name": "Default", 0: "", 2: "2", 4: "4", 8: "8", 16: "16", 32: "32", 64: "64", 128: "128",
                 256: "256", 512: "512", 1024: "1024", 2048: "2048", 4096: "4096", 8192: "8192"},
@@ -25,7 +25,7 @@ def key_pressed(event):
     if not is_game_over(game_grid):
         new_game_grid = move_grid(list(game_grid), Dir[car.lower()])
 
-        if not is_full_grid(new_game_grid) and game_grid != new_game_grid:
+        if not is_grid_full(new_game_grid) and game_grid != new_game_grid:
             new_game_grid = grid_add_new_tile(new_game_grid)
 
         game_grid = list(new_game_grid)
