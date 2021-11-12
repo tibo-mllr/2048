@@ -19,9 +19,11 @@ Entries = {}
 
 def key_pressed(event):
     global game_grid
-    Dir = {'q': 'g', 'z': 'h', 'd': 'd', 's': 'b'}
+    Dir = {'q': 'g', 'z': 'h', 'd': 'd',
+           's': 'b', 'b': 'b', 'g': 'g', 'h': 'h'}
+    car = event.char
     if not is_game_over(game_grid):
-        new_game_grid = move_grid(list(game_grid), Dir[event.char])
+        new_game_grid = move_grid(list(game_grid), Dir[car.lower()])
 
         if not is_full_grid(new_game_grid) and game_grid != new_game_grid:
             new_game_grid = grid_add_new_tile(new_game_grid)
@@ -39,8 +41,10 @@ def key_pressed(event):
 def graphical_grid_init():
     global window
     window = tk.Tk()
+    window.title("Menu")
     global G_2048
     G_2048 = tk.Toplevel(window)
+    G_2048.title("2048")
     G_2048.grid()
 
     Ent_Size = tk.StringVar("")
@@ -65,10 +69,6 @@ def graphical_grid_init():
     Quit = tk.Button(window, text="Quit", command=quit)
     Quit.pack(side=tk.LEFT)
 
-    Size = Ent_Size.get().strip()
-    print("Size :", Size)
-    Theme = Ent_Theme.get().strip()
-    print("Theme :", Theme)
     Play = tk.Button(window, text="Play",
                      command=play)
     Play.pack(side=tk.RIGHT)
