@@ -17,7 +17,7 @@ Composée de 5 membres, cette équipe a clairement la meilleure ambiance
 ![alt text](Photos_ReadMe/Interface.png)
 
 
-* Les fichier play.py dans le dossier game2048 est le jeu fonctionnel sur python. Tout marche (normalement) même pour rejouer. Cette version ne prend par contre pas en compte 'zqsd'
+* Les fichier play.py dans le dossier game2048 est le jeu fonctionnel sur python. Tout marche (normalement) même pour rejouer. Cette version ne prend par contre pas en compte 'zqsd'.
 ![alt text](Photos_ReadMe/Jeu.png)
 
 * Le dossier interface_2048 contient les fichiers portants sur l'interface tkinter, mais étant donné que pour display_grid.py il faut importer des fichiers d'autres dossiers, il a fallu le sortir et le mettre dans le dossier général.
