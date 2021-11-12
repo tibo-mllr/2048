@@ -137,7 +137,7 @@ def long_value_with_theme(game_grid, theme): #pareil qu'avant mais fonctionne qu
     return i
 
 
-def grid_to_string_with_size_and_theme(game_grid, theme, n): #crée la grille de la bonne dimension en prenant en compte la longueur des valeurs et le thème
+def grid_to_string_with_size_and_theme(game_grid, theme, n): #crée la grille dans python de la bonne dimension en prenant en compte la longueur des valeurs et le thème
     Max = long_value_with_theme(game_grid, theme)
     L = """"""
     for i in range(n):

@@ -4,7 +4,7 @@ from tkinter import Canvas, StringVar, ttk
 from functools import partial
 
 Colours = {2: '#FBEEE6', 4: '#F2D7D5', 8: '#E6B0AA', 16: '#D98880', 32: '#CD6155', 64: '#C0392B',
-           128: '#A93226', 256: '#922B21', 512: '#7B241C', 1024: '#641E16', 2048: '#512E5F', 4096: '#4A235A'}
+           128: '#A93226', 256: '#922B21', 512: '#7B241C', 1024: '#641E16', 2048: '#512E5F', 4096: '#4A235A', 8192: '#7F00FF'}
 
 THEMES = {"0": {"name": "Default", 0: "", 2: "2", 4: "4", 8: "8", 16: "16", 32: "32", 64: "64", 128: "128",
                 256: "256", 512: "512", 1024: "1024", 2048: "2048", 4096: "4096", 8192: "8192"},
@@ -18,17 +18,19 @@ game_grid = []
 Entries = {}
 
 
-def key_pressed(event):
+def key_pressed(event): #fonction qui change la grille en fonction du déplacement entré par le joueur
     global game_grid
-    Dir = {'q': 'g', 'z': 'h', 'd': 'd', 's': 'b'}
+    Dir = {'q': 'g', 'z': 'h', 'd': 'd',
+           's': 'b', 'b': 'b', 'g': 'g', 'h': 'h'}
+    car = event.char
     if not is_game_over(game_grid):
-        new_game_grid = move_grid(list(game_grid), Dir[event.char])
+        new_game_grid = move_grid(list(game_grid), Dir[car.lower()]) #pour que ça marche meme si la MAJ eest verrouillée
 
-        if not is_full_grid(new_game_grid) and game_grid != new_game_grid:
-            new_game_grid = grid_add_new_tile(new_game_grid)
+        if not is_full_grid(new_game_grid) and game_grid != new_game_grid: #crée la nouvelle grille 
+            new_game_grid = grid_add_new_tile(new_game_grid) #ajoute 2 ou 4 de manière aléatoire dans une case vide
 
         game_grid = list(new_game_grid)
-        display_and_update_graphical_grid(len(game_grid), theme)
+        display_and_update_graphical_grid(len(game_grid), theme) #met a jour sur les interfaces visuelles de la nouvelle grille
 
     else:
         if is_game_winner(game_grid):
@@ -37,11 +39,13 @@ def key_pressed(event):
             print("Perdu, essayez encore...")
 
 
-def graphical_grid_init():
+def graphical_grid_init(): #initialise la fenetre de départ
     global window
     window = tk.Tk()
+    window.title("Menu")
     global G_2048
     G_2048 = tk.Toplevel(window)
+    G_2048.title("2048")
     G_2048.grid()
 
     Ent_Size = tk.StringVar("")
@@ -83,7 +87,7 @@ def graphical_grid_init():
     window.mainloop()
 
 
-def play(*args):
+def play(*args): #appuie sur lee bouton play
     size = Entries["Size"][1].get().strip()
     global game_grid
     game_grid = init_game(int(size))
@@ -96,7 +100,7 @@ def play(*args):
     window.mainloop()
 
 
-def create_pattern(n):
+def create_pattern(n): #crée la grille de jeu
     C = tk.Canvas(background, bg='white', height=100*n, width=100*n)
     C.pack(fill=tk.BOTH, expand=True)
 
@@ -118,7 +122,7 @@ def create_pattern(n):
                                               j + 50, height=98, width=98, window=Widgets[(i, j)])
 
 
-def display_and_update_graphical_grid(n, theme):
+def display_and_update_graphical_grid(n, theme): #configure le graphique de chaque case en fonction de la valeur de celle-ci
 
     for i in range(n):
         for j in range(n):
