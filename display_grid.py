@@ -66,10 +66,6 @@ def graphical_grid_init():
     Quit = tk.Button(window, text="Quit", command=quit)
     Quit.pack(side=tk.LEFT)
 
-    Size = Ent_Size.get().strip()
-    print("Size :", Size)
-    Theme = Ent_Theme.get().strip()
-    print("Theme :", Theme)
     Play = tk.Button(window, text="Play",
                      command=play)
     Play.pack(side=tk.RIGHT)

@@ -158,7 +158,7 @@ def move_grid(game_grid, d): #deplace de la grille vers la direction d indiquée
         return move_right(game_grid)
 
 
-def is_full_grid(game_grid):
+def is_full_grid(game_grid): #verifie si la grille est plein ou non 
     T = True
     for row in game_grid:
         if ' ' in row or 0 in row:
@@ -166,7 +166,7 @@ def is_full_grid(game_grid):
     return T
 
 
-def move_possible(game_grid):
+def move_possible(game_grid): #verifie lesquels des mouvements apportent des changements a la grille
     T = [False, False, False, False]
     D = ["h", "d", "b", "g"]
     for i in range(len(D)):
@@ -178,11 +178,11 @@ def move_possible(game_grid):
     return T
 
 
-def is_game_over(game_grid):
+def is_game_over(game_grid): #retourne True si la grille est plein et il n'y a plus aucun mouvements possibles
     return is_full_grid(game_grid) and move_possible(game_grid) == [False, False, False, False]
 
 
-def get_grid_tile_max(game_grid):
+def get_grid_tile_max(game_grid): #renvoie la plus grande valeur se trouvant sur la grille
     res = 0
     for i in range(len(game_grid)):
         for j in range(len(game_grid)):
@@ -191,7 +191,7 @@ def get_grid_tile_max(game_grid):
     return res
 
 
-def is_game_winner(game_grid):
+def is_game_winner(game_grid): #renvoie True si la valeur 2048 a été atteinte
     if get_grid_tile_max(game_grid) >= 2048:
         return True
 
