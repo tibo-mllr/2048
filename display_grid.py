@@ -18,19 +18,24 @@ game_grid = []
 Entries = {}
 
 
-def key_pressed(event): #fonction qui change la grille en fonction du déplacement entré par le joueur
+# fonction qui change la grille en fonction du déplacement entré par le joueur
+def key_pressed(event):
     global game_grid
     Dir = {'q': 'g', 'z': 'h', 'd': 'd',
            's': 'b', 'b': 'b', 'g': 'g', 'h': 'h'}
     car = event.char
     if not is_game_over(game_grid):
-        new_game_grid = move_grid(list(game_grid), Dir[car.lower()]) #pour que ça marche meme si la MAJ eest verrouillée
+        # pour que ça marche meme si la MAJ eest verrouillée
+        new_game_grid = move_grid(list(game_grid), Dir[car.lower()])
 
-        if not is_grid_full(new_game_grid) and game_grid != new_game_grid: #crée la nouvelle grille 
-            new_game_grid = grid_add_new_tile(new_game_grid) #ajoute 2 ou 4 de manière aléatoire dans une case vide
+        # crée la nouvelle grille
+        if not is_grid_full(new_game_grid) and game_grid != new_game_grid:
+            # ajoute 2 ou 4 de manière aléatoire dans une case vide
+            new_game_grid = grid_add_new_tile(new_game_grid)
 
         game_grid = list(new_game_grid)
-        display_and_update_graphical_grid(len(game_grid), theme) #met a jour sur les interfaces visuelles de la nouvelle grille
+        # met a jour sur les interfaces visuelles de la nouvelle grille
+        display_and_update_graphical_grid(len(game_grid), theme)
 
     else:
         if is_game_winner(game_grid):
@@ -39,7 +44,7 @@ def key_pressed(event): #fonction qui change la grille en fonction du déplaceme
             print("Perdu, essayez encore...")
 
 
-def graphical_grid_init(): #initialise la fenetre de départ
+def graphical_grid_init():  # initialise la fenetre de départ
     global window
     window = tk.Tk()
     window.title("Menu")
@@ -70,9 +75,9 @@ def graphical_grid_init(): #initialise la fenetre de départ
     Quit = tk.Button(window, text="Quit", command=quit)
     Quit.pack(side=tk.LEFT)
 
-    Play = tk.Button(window, text="Play",
-                    command=play)
+    Play = tk.Button(window, text="Play", command=play)
     Play.pack(side=tk.RIGHT)
+
     global Widgets
     Widgets = {}
 
@@ -87,7 +92,7 @@ def graphical_grid_init(): #initialise la fenetre de départ
     window.mainloop()
 
 
-def play(*args): #appuie sur lee bouton play
+def play(*args):  # appuie sur lee bouton play
     size = Entries["Size"][1].get().strip()
     global game_grid
     game_grid = init_game(int(size))
@@ -100,19 +105,17 @@ def play(*args): #appuie sur lee bouton play
     window.mainloop()
 
 
-def create_pattern(n): #crée la grille de jeu
+def create_pattern(n):  # crée la grille de jeu
     C = tk.Canvas(background, bg='white', height=100*n, width=100*n)
     C.pack(fill=tk.BOTH, expand=True)
-    C.create_rectangle(150,25,250,125, fill='#512E5F')
-    C.create_text(200,75, text='2048', fill='white')
 
     # Lignes
     for i in range(n+1):
-        C.create_line((150, 100*i+150), (100*n+150, 100*i+150), width=2)
+        C.create_line((0, 100*i), (100*n, 100*i), width=2)
 
     # Colonnes
     for i in range(n+1):
-        C.create_line((100*i+150, 150), (100*i+150, 100*n+150), width=2)
+        C.create_line((100*i, 0), (100*i, 100*n), width=2)
 
     # Widgets
 
@@ -120,11 +123,12 @@ def create_pattern(n): #crée la grille de jeu
         for j in range(n):
             Widgets[(i, j)] = tk.Label(background, bg='#8B6C42')
             Widgets[(i, j)].pack(fill=tk.BOTH, expand=True)
-            Windows[(i, j)] = C.create_window(100*i + 200, 100 *
-                                              j + 200, height=98, width=98, window=Widgets[(i, j)])
+            Windows[(i, j)] = C.create_window(100*i + 50, 100 *
+                                              j + 50, height=98, width=98, window=Widgets[(i, j)])
 
 
-def display_and_update_graphical_grid(n, theme): #configure le graphique de chaque case en fonction de la valeur de celle-ci
+# configure le graphique de chaque case en fonction de la valeur de celle-ci
+def display_and_update_graphical_grid(n, theme):
 
     for i in range(n):
         for j in range(n):
@@ -135,3 +139,6 @@ def display_and_update_graphical_grid(n, theme): #configure le graphique de chaq
                 Widgets[(i, j)].configure(text=' ')
                 Widgets[(i, j)].configure(bg='#8B6C42')
 
+
+if __name__ == '__main__':
+    graphical_grid_init()
