@@ -134,19 +134,3 @@ def display_and_update_graphical_grid(n, theme):
                 Widgets[(i, j)].configure(text=' ')
                 Widgets[(i, j)].configure(bg='#8B6C42')
 
-<<<<<<< HEAD
-=======
-def StartGame():
-    Start = tk.Tk()
-    Start.title('Start')
-    Start.geometry("400x400")
-    boutonStart = tk.Button (text = "Lancer une partie de 2048", command=lambda:[Start.quit, graphical_grid_init()])
-    boutonStart.grid(padx=50, pady=50)
-    boutonQuit = tk.Button (text = "Quitter le jeu", command = Start.quit)
-    boutonQuit.grid()
-    Fond = tk.Canvas(Start, bg='Yellow', height=400, width=400)
-    Fond.grid()
-    Start.mainloop()
-
-graphical_grid_init()
->>>>>>> Guillaume
