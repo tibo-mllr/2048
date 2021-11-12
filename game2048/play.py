@@ -11,7 +11,7 @@ def jeu():
         print(grid_to_string_with_size_and_theme(game_grid, theme, size))
         d = read_player_command()
         new_game_grid = move_grid(game_grid, d)
-        if not is_full_grid(new_game_grid) and game_grid != new_game_grid:
+        if not is_grid_full(new_game_grid) and game_grid != new_game_grid:
             new_game_grid = grid_add_new_tile(new_game_grid)
 
         game_grid = list(new_game_grid)

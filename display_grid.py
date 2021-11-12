@@ -26,7 +26,7 @@ def key_pressed(event):
     if not is_game_over(game_grid):
         new_game_grid = move_grid(list(game_grid), Dir[car.lower()])
 
-        if not is_full_grid(new_game_grid) and game_grid != new_game_grid:
+        if not is_grid_full(new_game_grid) and game_grid != new_game_grid:
             new_game_grid = grid_add_new_tile(new_game_grid)
 
         game_grid = list(new_game_grid)
