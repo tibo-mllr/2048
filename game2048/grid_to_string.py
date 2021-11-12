@@ -8,7 +8,7 @@ THEMES = {"0": {"name": "Default", 0: "", 2: "2", 4: "4", 8: "8", 16: "16", 32: 
                 128: "G", 256: "H", 512: "I", 1024: "J", 2048: "K", 4096: "L", 8192: "M"}}
 
 
-def grid_to_string(game_grid):
+def grid_to_string(game_grid): #crée la grille de la bonne taille en fonction de la plus grande valeur sur la grille
     n = len(game_grid)
     Max = long_value(game_grid)
     L = """"""
@@ -60,7 +60,7 @@ def grid_to_string(game_grid):
 
 # La vrai fonction
 
-def grid_to_string_with_size(game_grid, n):
+def grid_to_string_with_size(game_grid, n): #meme fonction qu'avant mais qui prend en compte la taille de la taille de la grille
     Max = long_value(game_grid)
     L = """"""
     for i in range(n):
@@ -114,7 +114,7 @@ def grid_to_string_with_size(game_grid, n):
     return L
 
 
-def long_value(game_grid):
+def long_value(game_grid): #retourne la plus grande valeur en nombre de caractère de la grille
     i = 1
     n = len(game_grid)
     for j in range(n):
@@ -124,7 +124,7 @@ def long_value(game_grid):
     return i
 
 
-def long_value_with_theme(game_grid, theme):
+def long_value_with_theme(game_grid, theme): #pareil qu'avant mais fonctionne quel que soit le theme
     i = 1
     n = len(game_grid)
     for j in range(n):
@@ -135,7 +135,7 @@ def long_value_with_theme(game_grid, theme):
     return i
 
 
-def grid_to_string_with_size_and_theme(game_grid, theme, n):
+def grid_to_string_with_size_and_theme(game_grid, theme, n): #crée la grille dans python de la bonne dimension en prenant en compte la longueur des valeurs et le thème
     Max = long_value_with_theme(game_grid, theme)
     L = """"""
     for i in range(n):

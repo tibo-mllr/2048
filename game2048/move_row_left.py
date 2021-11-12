@@ -1,7 +1,7 @@
 
 
 
-def move_row_left_vBilal(l):
+def move_row_left_vBilal(l): #fonctions qui peuvent etre ignorées qui ne seront pas utilisées
     newl = []
     for i in range(len(l)):
         if l[i] != 0 :

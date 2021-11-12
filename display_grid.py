@@ -17,19 +17,20 @@ game_grid = []
 
 Entries = {}
 
-def key_pressed(event):
+
+def key_pressed(event): #fonction qui change la grille en fonction du déplacement entré par le joueur
     global game_grid
     Dir = {'q': 'g', 'z': 'h', 'd': 'd',
            's': 'b', 'b': 'b', 'g': 'g', 'h': 'h'}
     car = event.char
     if not is_game_over(game_grid):
-        new_game_grid = move_grid(list(game_grid), Dir[car.lower()])
+        new_game_grid = move_grid(list(game_grid), Dir[car.lower()]) #pour que ça marche meme si la MAJ eest verrouillée
 
-        if not is_grid_full(new_game_grid) and game_grid != new_game_grid:
-            new_game_grid = grid_add_new_tile(new_game_grid)
+        if not is_grid_full(new_game_grid) and game_grid != new_game_grid: #crée la nouvelle grille 
+            new_game_grid = grid_add_new_tile(new_game_grid) #ajoute 2 ou 4 de manière aléatoire dans une case vide
 
         game_grid = list(new_game_grid)
-        display_and_update_graphical_grid(len(game_grid), theme)
+        display_and_update_graphical_grid(len(game_grid), theme) #met a jour sur les interfaces visuelles de la nouvelle grille
 
     else:
         if is_game_winner(game_grid):
@@ -38,7 +39,7 @@ def key_pressed(event):
             print("Perdu, essayez encore...")
 
 
-def graphical_grid_init():
+def graphical_grid_init(): #initialise la fenetre de départ
     global window
     window = tk.Tk()
     window.title("Menu")
@@ -86,7 +87,7 @@ def graphical_grid_init():
     window.mainloop()
 
 
-def play(*args):
+def play(*args): #appuie sur lee bouton play
     size = Entries["Size"][1].get().strip()
     global game_grid
     game_grid = init_game(int(size))
@@ -99,8 +100,8 @@ def play(*args):
     window.mainloop()
 
 
-def create_pattern(n):
-    C = tk.Canvas(background, bg='white', height=100*(n+2), width=100*(n+3))
+def create_pattern(n): #crée la grille de jeu
+    C = tk.Canvas(background, bg='white', height=100*n, width=100*n)
     C.pack(fill=tk.BOTH, expand=True)
     C.create_rectangle(150,25,250,125, fill='#512E5F')
     C.create_text(200,75, text='2048', fill='white')
@@ -123,7 +124,7 @@ def create_pattern(n):
                                               j + 200, height=98, width=98, window=Widgets[(i, j)])
 
 
-def display_and_update_graphical_grid(n, theme):
+def display_and_update_graphical_grid(n, theme): #configure le graphique de chaque case en fonction de la valeur de celle-ci
 
     for i in range(n):
         for j in range(n):
@@ -134,19 +135,3 @@ def display_and_update_graphical_grid(n, theme):
                 Widgets[(i, j)].configure(text=' ')
                 Widgets[(i, j)].configure(bg='#8B6C42')
 
-<<<<<<< HEAD
-=======
-def StartGame():
-    Start = tk.Tk()
-    Start.title('Start')
-    Start.geometry("400x400")
-    boutonStart = tk.Button (text = "Lancer une partie de 2048", command=lambda:[Start.quit, graphical_grid_init()])
-    boutonStart.grid(padx=50, pady=50)
-    boutonQuit = tk.Button (text = "Quitter le jeu", command = Start.quit)
-    boutonQuit.grid()
-    Fond = tk.Canvas(Start, bg='Yellow', height=400, width=400)
-    Fond.grid()
-    Start.mainloop()
-
-graphical_grid_init()
->>>>>>> Guillaume

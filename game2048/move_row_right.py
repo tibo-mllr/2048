@@ -1,6 +1,6 @@
 from move_row_left import move_row_left_vBilal
 
-def move_row_right_vBilal(l):
+def move_row_right_vBilal(l): #fonction qui peut eetre ignorée car non utilisée
     leftl = move_row_left_vBilal(l)
     newl = []
     for i in range(len(l)):
