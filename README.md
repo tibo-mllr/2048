@@ -24,3 +24,4 @@ Composée de 5 membres, cette équipe a clairement la meilleure ambiance
     * move_row_left.py qui est une autre version de la fonction move_row_left définié dans grid_2048
     * move_row_right.py de même
     * play.py qui est décrit plus haut
+    * Random_Game.py contient la fonction random_play qui fait jouer un ordinateur.
