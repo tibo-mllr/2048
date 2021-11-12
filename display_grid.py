@@ -17,7 +17,6 @@ game_grid = []
 
 Entries = {}
 
-
 def key_pressed(event):
     global game_grid
     Dir = {'q': 'g', 'z': 'h', 'd': 'd', 's': 'b'}
@@ -133,6 +132,14 @@ def display_and_update_graphical_grid(n, theme):
                 Widgets[(i, j)].configure(text=' ')
                 Widgets[(i, j)].configure(bg='#8B6C42')
 
+def StartGame():
+    Start = tk.Tk()
+    Start.title('Start')
+    Start.geometry("400x400")
+    boutonStart = tk.Button (text = "Lancer une partie de 2048", command=lambda:[Start.quit, graphical_grid_init()])
+    boutonStart.grid(padx=50, pady=50)
+    boutonQuit = tk.Button (text = "Quitter le jeu", command = Start.quit)
+    boutonQuit.grid()
+    Start.mainloop()
 
-if __name__ == '__main__':
-    graphical_grid_init()
+StartGame()
