@@ -60,6 +60,7 @@ def test_init_game():
     assert 2 in tiles or 4 in tiles
     assert len(get_empty_tiles_positions(grid)) == 14
 
+
 def test_move_row_left():
 
     assert move_row_left([0, 0, 0, 2]) == [2, 0, 0, 0]
@@ -135,15 +136,8 @@ if __name__ == "__main__":
     test_get_new_position()
     test_grid_add_new_tile()
     test_init_game()
-<<<<<<< HEAD
     test_move_row_left()
-=======
-    test_move_row_left()
-<<<<<<< HEAD
->>>>>>> 62c0685da47e59446808d5dca8e7a1b59341d93a
-=======
     test_move_row_right()
     test_move_grid()
     test_move_possible()
     test_game_over()
->>>>>>> 87e3b88ccb17d8c1e10ff0d93413d4305f2c2e63
